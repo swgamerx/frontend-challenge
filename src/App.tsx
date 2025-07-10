@@ -10,7 +10,6 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // infinitly fetchs tasks
   useEffect(() => {
     console.log("Fetching data...");
     fetchTasks()
@@ -26,7 +25,6 @@ const App = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // this never updates
       console.log("Task count:", tasks.length);
     }, 3000);
     return () => clearInterval(interval);
@@ -54,7 +52,14 @@ const App = () => {
 
   return (
     <main className="max-w-xl mx-auto p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Syndica Todo App</h1>
+      <div className="flex gap-4 items-center mb-8">
+        <img
+          src="../public/mark.svg"
+          alt="Syndica Logo"
+          className="w-8 h-auto"
+        />
+        <h1 className="text-2xl font-bold">Syndica Task Manager</h1>
+      </div>
 
       <TaskInput onAdd={handleAdd} />
       <TaskList tasks={tasks} onToggle={handleToggle} />

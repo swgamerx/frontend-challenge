@@ -22,12 +22,17 @@ const TaskInput = ({ onAdd }: TaskInputProps) => {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit(e);
+          }
+        }}
         placeholder="Add a task..."
-        className="flex-1 px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="flex-1 px-3 py-2 border border-gray-500 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
       />
       <button
         type="submit"
-        className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+        className="px-4 py-2 bg-[#007AFF] text-white rounded hover:bg-bg-[#009AFF] transition cursor-pointer"
       >
         Add
       </button>

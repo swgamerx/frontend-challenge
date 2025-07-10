@@ -9,7 +9,6 @@ const TaskStats = ({ tasks }: TaskStatsProps) => {
   const [completed, setCompleted] = useState(0);
 
   useEffect(() => {
-    // Intentional bug: only runs once because of empty deps
     const count = tasks.filter((t) => t.completed).length;
     setCompleted(count);
   }, []);

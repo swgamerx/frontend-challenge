@@ -24,8 +24,9 @@ You have **45 minutes** to:
 3. Ensure the app:
    - Loads and displays tasks correctly without infinite loops.
    - Allows adding new tasks reliably.
-   - Toggles task completion state without race conditions.
+   - Logs task count accurately.
    - Displays accurate task completion statistics.
+   - Provides a smooth user experience.
 4. (Optional) Improve code readability or add comments explaining your fixes.
 
 ---
@@ -34,13 +35,11 @@ You have **45 minutes** to:
 
 This challenge includes several intentionally introduced issues, such as:
 
-- **Missing dependency arrays in `useEffect`**, causing infinite re-fetch loops.
-- **Stale closures** in `setTimeout`/`setInterval` or async callbacks leading to outdated state or logs.
-- **Broken task stats**: completed task count may appear incorrect after toggling — due to stale derived state that's never recomputed.
+- **Infinite re-fetch loop**: fetchTasks should only run once on initial load.
+- **Stale logs**: task count in the logs never updates.
+- **Broken task stats**: completed task count may appear incorrect after toggling.
+- **UI jank**: network latency causing inconsitant and buggy ux.
 - **Implement remove task**: implement remove task functionality
-- Potential improper state mutations or side effects.
-- Subtle React hooks pitfalls that can trip up even experienced developers.
-
 ---
 
 ## 🛠 Setup
@@ -66,15 +65,7 @@ Open http://localhost:5173 in your browser to view the app.
 - Familiarize yourself with the codebase.
 - Use browser DevTools and React DevTools.
 - Look for console warnings/errors.
-- Review hooks carefully for dependency and closure issues.
+- Review code carefully.
 - Test user flows: adding tasks, toggling completion, watching task counts.
 - Fix bugs incrementally and verify your fixes.
-
 ---
-
-## 💡 Bonus Tips
-
-- Pay attention to state update patterns (prefer functional updates when needed).
-- Watch for side effects in hooks — dependency arrays matter!
-- Remember closures capture variables at the time of creation.
-- Think about race conditions and asynchronous updates.

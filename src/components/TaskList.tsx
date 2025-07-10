@@ -15,7 +15,7 @@ const TaskList = ({ tasks, onToggle }: TaskListProps) => {
       {tasks.map((task) => (
         <li
           key={task.id}
-          className="flex justify-between items-center gap-2 p-2 border rounded shadow-sm bg-white hover:bg-gray-50 transition"
+          className="flex justify-between items-center gap-2 p-2 border border-gray-400 rounded shadow-sm bg-white hover:bg-gray-50 transition"
         >
           <div>
             <input
@@ -31,7 +31,7 @@ const TaskList = ({ tasks, onToggle }: TaskListProps) => {
             </span>
           </div>
 
-          <button className="ml-auto px-2 py-1 text-sm text-white bg-red-500 rounded hover:bg-red-600 transition">
+          <button className="ml-auto px-2 py-1 text-xs text-red-100 bg-red-600 rounded hover:bg-red-600 transition">
             Delete
           </button>
         </li>
