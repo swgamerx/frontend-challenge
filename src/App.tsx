@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TaskList from "./components/TaskList";
 import TaskInput from "./components/TaskInput";
 import TaskStats from "./components/TaskStats";
-import { fetchTasks, addTask, toggleTask } from "./lib/fakeApi";
+import { fetchTasks, addTask, toggleTask, removeTask } from "./lib/fakeApi";
 import type { Task } from "./types";
 
 const App = () => {
@@ -36,7 +36,8 @@ const App = () => {
   };
 
   const handleRemove = async (id: string) => {
-    console.log("id: ", id);
+    await removeTask(id);
+    console.log("removing id: ", id);
   };
 
   const handleToggle = (id: string) => {
@@ -62,7 +63,7 @@ const App = () => {
       </div>
 
       <TaskInput onAdd={handleAdd} />
-      <TaskList tasks={tasks} onToggle={handleToggle} />
+      <TaskList tasks={tasks} onToggle={handleToggle} handleRemove={handleRemove} />
       <TaskStats tasks={tasks} />
     </main>
   );
