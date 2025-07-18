@@ -23,12 +23,13 @@ const App = () => {
       });
   });
 
-  useEffect(() => {
+  // Why a looping interval useEffect just to console log number of tasks
+/*  useEffect(() => {
     const interval = setInterval(() => {
       console.log("Task count:", tasks.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, []);*/
 
   const handleAdd = async (text: string) => {
     const newTask = await addTask(text);
