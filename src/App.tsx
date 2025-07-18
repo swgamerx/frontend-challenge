@@ -21,19 +21,20 @@ const App = () => {
         setError("Failed to load tasks");
         setLoading(false);
       });
-  });
+  },[]);
 
-  // Why a looping interval useEffect just to console log number of tasks
-/*  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("Task count:", tasks.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);*/
+  // no clear purpose for user or debugging ( I would normally delete this in working code base)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     console.log("Task count:", tasks.length);
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, [tasks.length]);
 
   const handleAdd = async (text: string) => {
     const newTask = await addTask(text);
-    setTasks([newTask]);
+    setTasks([...tasks, newTask]);
+    console.log('task list', tasks);
   };
 
   const handleRemove = async (id: string) => {
